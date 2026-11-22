@@ -1,0 +1,100 @@
+<%- include('partials/header') %>
+
+<section class="page-header">
+  <div class="container admin-header">
+    <div>
+      <p class="eyebrow">Administration</p>
+      <h1>Administrator dashboard</h1>
+    </div>
+    <div class="header-badge danger">Live operations</div>
+  </div>
+</section>
+
+<section class="container admin-panel">
+  <% if (typeof success !== 'undefined' && success) { %>
+    <div class="alert alert-success"><%= success %></div>
+  <% } %>
+
+  <% if (typeof error !== 'undefined' && error) { %>
+    <div class="alert alert-error"><%= error %></div>
+  <% } %>
+
+  <div class="admin-summary">
+    <div class="mini-stat dark">
+      <span>Total shipments</span>
+      <strong><%= shipments.length %></strong>
+    </div>
+    <div class="mini-stat dark">
+      <span>In transit</span>
+      <strong><%= shipments.filter(s => s.status === 'En transit').length %></strong>
+    </div>
+    <div class="mini-stat dark">
+      <span>Delivered</span>
+      <strong><%= shipments.filter(s => s.status === 'Livré').length %></strong>
+    </div>
+  </div>
+
+  <div class="panel admin-create-panel">
+    <p class="eyebrow">Team management</p>
+    <h2>Add an administrator</h2>
+    <p>Create a separate account with access to shipment operations.</p>
+
+    <form method="POST" action="/admin/users" class="shipment-form">
+      <div class="two-fields">
+        <label>
+          Full name
+          <input type="text" name="name" placeholder="Alex Morgan" autocomplete="name" required />
+        </label>
+        <label>
+          Email address
+          <input type="email" name="email" placeholder="alex@example.com" autocomplete="email" required />
+        </label>
+      </div>
+      <label>
+        Password
+        <input type="password" name="password" placeholder="At least 8 characters" minlength="8" autocomplete="new-password" required />
+      </label>
+      <button type="submit" class="btn btn-primary">Create administrator</button>
+    </form>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Tracking</th>
+          <th>Customer</th>
+          <th>Route</th>
+          <th>Weight</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% shipments.forEach((shipment) => { %>
+          <tr>
+            <td><strong><%= shipment.tracking_number %></strong></td>
+            <td><%= shipment.user_name %><br /><small><%= shipment.user_email %></small></td>
+            <td><%= shipment.origin %> → <%= shipment.destination %></td>
+            <td><%= shipment.weight_kg %> kg</td>
+            <td><span class="status badge"><%= statusLabel(shipment.status) %></span></td>
+            <td>
+              <form method="POST" action="/admin/status/<%= shipment.id %>">
+                <select name="status" class="mini-select">
+                  <option value="En préparation" <%= shipment.status === 'En préparation' ? 'selected' : '' %>>Preparing</option>
+                  <option value="Expédié" <%= shipment.status === 'Expédié' ? 'selected' : '' %>>Shipped</option>
+                  <option value="En transit" <%= shipment.status === 'En transit' ? 'selected' : '' %>>In transit</option>
+                  <option value="Livré" <%= shipment.status === 'Livré' ? 'selected' : '' %>>Delivered</option>
+                  <option value="Retardé" <%= shipment.status === 'Retardé' ? 'selected' : '' %>>Delayed</option>
+                </select>
+                <button type="submit" class="btn btn-secondary btn-small">Save status</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

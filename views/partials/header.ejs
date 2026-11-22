@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <meta name="description" content="QuickDeveleryInc provides fast, reliable delivery for businesses and individuals." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <a href="/" class="brand">
+          <span class="brand-mark">Q</span>
+          QuickDeveleryInc
+        </a>
+
+        <nav class="main-nav">
+          <a href="/">Home</a>
+          <a href="#services">Services</a>
+          <a href="/track?q=EP240001">Tracking</a>
+          <% if (user && user.role === 'admin') { %>
+            <a href="/admin">Admin</a>
+          <% } else if (user) { %>
+            <a href="/dashboard">My account</a>
+          <% } %>
+        </nav>
+
+        <div class="nav-actions">
+          <% if (user) { %>
+            <span class="welcome">Hello, <%= user.name %></span>
+            <form method="POST" action="/logout">
+              <button class="btn btn-secondary" type="submit">Sign out</button>
+            </form>
+          <% } else { %>
+            <a class="btn btn-secondary" href="/login">Sign in</a>
+            <a class="btn btn-primary" href="/register">Create account</a>
+          <% } %>
+        </div>
+      </div>
+    </header>
+
+    <main>

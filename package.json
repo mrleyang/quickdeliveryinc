@@ -1,0 +1,17 @@
+{
+  "name": "fedex-clone",
+  "version": "1.0.0",
+  "description": "Site web de livraison inspiré de FedEx avec comptes client et admin",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^11.7.0",
+    "ejs": "^3.1.2",
+    "express": "^4.21.2",
+    "express-session": "^1.18.0"
+  }
+}

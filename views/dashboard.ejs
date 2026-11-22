@@ -1,0 +1,115 @@
+<%- include('partials/header') %>
+
+<section class="page-header">
+  <div class="container dashboard-header">
+    <div>
+      <p class="eyebrow">Customer dashboard</p>
+      <h1>Welcome, <%= user.name %></h1>
+    </div>
+    <div class="header-badge">Tracking active</div>
+  </div>
+</section>
+
+<section class="container dashboard-summary">
+  <div class="mini-stat">
+    <span>Shipments</span>
+    <strong><%= shipments.length %></strong>
+  </div>
+  <div class="mini-stat">
+    <span>In progress</span>
+    <strong><%= shipments.filter(s => s.status !== 'Livré').length %></strong>
+  </div>
+  <div class="mini-stat">
+    <span>Fast delivery</span>
+    <strong>48h</strong>
+  </div>
+</section>
+
+<section class="container dashboard-grid">
+  <div class="panel">
+    <h2>New shipment</h2>
+
+    <% if (typeof success !== 'undefined' && success) { %>
+      <div class="alert alert-success"><%= success %></div>
+    <% } %>
+
+    <% if (typeof error !== 'undefined' && error) { %>
+      <div class="alert alert-error"><%= error %></div>
+    <% } %>
+
+    <form method="POST" action="/shipments/create" class="shipment-form">
+      <div class="two-fields">
+        <label>
+          Sender
+          <input type="text" name="senderName" placeholder="Sender name" required />
+        </label>
+        <label>
+          Recipient
+          <input type="text" name="recipientName" placeholder="Recipient name" required />
+        </label>
+      </div>
+
+      <div class="two-fields">
+        <label>
+          Origin city
+          <input type="text" name="origin" placeholder="New York" required />
+        </label>
+        <label>
+          Destination city
+          <input type="text" name="destination" placeholder="Chicago" required />
+        </label>
+      </div>
+
+      <div class="two-fields">
+        <label>
+          Package type
+          <select name="packageType" required>
+            <option value="">Select a type</option>
+            <option>Standard package</option>
+            <option>Express package</option>
+            <option>Fragile shipment</option>
+            <option>Document</option>
+          </select>
+        </label>
+        <label>
+          Weight (kg)
+          <input type="number" step="0.1" min="0.1" name="weightKg" placeholder="2.5" required />
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Create shipment</button>
+    </form>
+  </div>
+
+  <div class="panel">
+    <h2>My shipments</h2>
+    <% if (!shipments || shipments.length === 0) { %>
+      <p>No shipments yet.</p>
+    <% } else { %>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Tracking</th>
+              <th>Origin</th>
+              <th>Destination</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% shipments.forEach((shipment) => { %>
+              <tr>
+                <td><strong><%= shipment.tracking_number %></strong></td>
+                <td><%= shipment.origin %></td>
+                <td><%= shipment.destination %></td>
+                <td><span class="status badge"><%= statusLabel(shipment.status) %></span></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    <% } %>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

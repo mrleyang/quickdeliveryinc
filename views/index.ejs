@@ -1,0 +1,156 @@
+<%- include('partials/header') %>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <p class="eyebrow">Smarter delivery</p>
+      <h1>Logistics that move your business forward.</h1>
+      <p class="lead">
+        QuickDeveleryInc brings shipments, customers and logistics teams together in one seamless platform.
+      </p>
+
+      <form class="tracking-form" action="/track" method="GET">
+        <input type="text" name="q" placeholder="Enter a tracking number" aria-label="Tracking number" />
+        <button class="btn btn-primary" type="submit">Track</button>
+      </form>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="/register">Create account</a>
+        <a class="btn btn-secondary" href="/login">Sign in</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="card-floating package-card">
+        <span class="mini-label">Shipment in transit</span>
+        <strong>QD-240001</strong>
+        <small>Paris → Lyon</small>
+      </div>
+      <div class="card-floating map-card">
+        <div class="dot dot-red"></div>
+        <div class="dot dot-blue"></div>
+        <div class="route"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container stats-grid">
+    <% stats.forEach((stat) => { %>
+      <div class="stat-box">
+        <strong><%= stat.value %></strong>
+        <span><%= stat.label %></span>
+      </div>
+    <% }) %>
+  </div>
+</section>
+
+<section class="section-gap" id="services">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Our services</p>
+      <h2>Logistics solutions built for speed.</h2>
+    </div>
+
+    <div class="service-grid">
+      <article class="service-card">
+        <div class="icon-box">01</div>
+        <h3>Express delivery</h3>
+        <p>Priority shipping with real-time tracking and optimized delivery times for urgent needs.</p>
+      </article>
+      <article class="service-card">
+        <div class="icon-box">02</div>
+        <h3>International shipping</h3>
+        <p>Reliable global coverage to move your goods wherever they need to go.</p>
+      </article>
+      <article class="service-card">
+        <div class="icon-box">03</div>
+        <h3>B2B &amp; e-commerce</h3>
+        <p>Order management, recurring shipments and centralized control for growing businesses.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section-gap value-panel">
+  <div class="container two-columns">
+    <div>
+      <p class="eyebrow">Why QuickDeveleryInc</p>
+      <h2>A delivery platform designed for performance.</h2>
+      <ul class="feature-list">
+        <li>Real-time shipment tracking</li>
+        <li>Complete shipment history and management</li>
+        <li>Centralized status administration</li>
+        <li>A modern, intuitive customer experience</li>
+      </ul>
+    </div>
+
+    <div class="value-cards">
+      <div class="mini-panel">
+        <strong>99.2%</strong>
+        <span>On-time deliveries</span>
+      </div>
+      <div class="mini-panel">
+        <strong>220</strong>
+        <span>Countries connected</span>
+      </div>
+      <div class="mini-panel accent">
+        <strong>24/7</strong>
+        <span>Support and operations</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-gap demo-panel">
+  <div class="container two-columns">
+    <div>
+      <p class="eyebrow">Customer account</p>
+      <h2>Manage your shipments with ease.</h2>
+      <ul class="feature-list">
+        <li>Create a shipment in just a few clicks</li>
+        <li>Track your package in real time</li>
+        <li>Review your complete shipment history</li>
+      </ul>
+    </div>
+    <div>
+      <p class="eyebrow">Administrator account</p>
+      <h2>Oversee your logistics operations.</h2>
+      <ul class="feature-list">
+        <li>View every shipment</li>
+        <li>Update delivery statuses</li>
+        <li>Monitor activity in real time</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section-gap process-panel">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">How it works</p>
+      <h2>A smooth journey from booking to delivery.</h2>
+    </div>
+
+    <div class="process-grid">
+      <article class="process-card">
+        <span>01</span>
+        <h3>Create your account</h3>
+        <p>Set up your profile in seconds and access your customer dashboard.</p>
+      </article>
+      <article class="process-card">
+        <span>02</span>
+        <h3>Book your shipment</h3>
+        <p>Enter the origin, destination and shipment type in just a few steps.</p>
+      </article>
+      <article class="process-card">
+        <span>03</span>
+        <h3>Follow every step</h3>
+        <p>Get clear updates and track your package all the way to its final destination.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,42 @@
+<%- include('partials/header') %>
+
+<section class="auth-section">
+  <div class="container auth-layout">
+    <div class="auth-panel info-panel">
+      <p class="eyebrow">Your customer account</p>
+      <h1>Stay on top of every delivery</h1>
+      <p>Track packages, review your history and manage shipments in just a few clicks.</p>
+      <ul class="feature-list compact-list">
+        <li>Real-time dashboard</li>
+        <li>Shipment history</li>
+        <li>Dedicated team support</li>
+      </ul>
+    </div>
+
+    <div class="auth-panel auth-box">
+      <h2>Sign in</h2>
+
+      <% if (error) { %>
+        <div class="alert alert-error"><%= error %></div>
+      <% } %>
+
+      <form method="POST" action="/login" class="auth-form">
+        <label>
+          Email address
+          <input type="email" name="email" placeholder="you@example.com" required />
+        </label>
+
+        <label>
+          Password
+          <input type="password" name="password" placeholder="••••••••" required />
+        </label>
+
+        <button type="submit" class="btn btn-primary full-width">Sign in</button>
+      </form>
+
+      <p class="auth-link">New to QuickDeveleryInc? <a href="/register">Create an account</a></p>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

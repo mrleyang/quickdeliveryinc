@@ -1,0 +1,55 @@
+<%- include('partials/header') %>
+
+<section class="page-header">
+  <div class="container">
+    <h1>Shipment tracking</h1>
+    <p>Tracking number: <strong><%= trackingNumber %></strong></p>
+  </div>
+</section>
+
+<section class="container">
+  <% if (shipment) { %>
+    <div class="track-box">
+      <div class="track-summary">
+        <span class="status badge"><%= statusLabel(shipment.status) %></span>
+        <h2><%= shipment.tracking_number %></h2>
+      </div>
+
+      <div class="track-grid">
+        <div>
+          <p class="meta-label">Sender</p>
+          <strong><%= shipment.sender_name %></strong>
+        </div>
+        <div>
+          <p class="meta-label">Recipient</p>
+          <strong><%= shipment.recipient_name %></strong>
+        </div>
+        <div>
+          <p class="meta-label">Origin</p>
+          <strong><%= shipment.origin %></strong>
+        </div>
+        <div>
+          <p class="meta-label">Destination</p>
+          <strong><%= shipment.destination %></strong>
+        </div>
+        <div>
+          <p class="meta-label">Weight</p>
+          <strong><%= shipment.weight_kg %> kg</strong>
+        </div>
+        <div>
+          <p class="meta-label">Created on</p>
+          <strong><%= formatDate(shipment.created_at) %></strong>
+        </div>
+      </div>
+    </div>
+  <% } else { %>
+    <div class="alert alert-error">No shipment found for this tracking number.</div>
+  <% } %>
+
+  <form class="tracking-form compact" action="/track" method="GET">
+    <input type="text" name="q" placeholder="Track another shipment" value="<%= trackingNumber %>" />
+    <button class="btn btn-primary" type="submit">Track</button>
+  </form>
+</section>
+
+<%- include('partials/footer') %>
