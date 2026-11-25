@@ -221,14 +221,31 @@ input:focus, select:focus {
 }
 
 .transport-gallery {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  align-items: center;
-  gap: 12px;
+  overflow: hidden;
   width: 100%;
 }
 
+.transport-track {
+  display: flex;
+  width: max-content;
+  animation: transport-scroll 24s linear infinite;
+}
+
+.transport-gallery:hover .transport-track,
+.transport-gallery:focus-within .transport-track {
+  animation-play-state: paused;
+}
+
+.transport-slide-set {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 12px;
+  padding-right: 12px;
+}
+
 .transport-card {
+  flex: 0 0 clamp(190px, 72vw, 280px);
   min-width: 0;
   margin: 0;
   overflow: hidden;
@@ -251,6 +268,12 @@ input:focus, select:focus {
   color: var(--dark-soft);
   font-size: 0.8rem;
   font-weight: 700;
+}
+
+@keyframes transport-scroll {
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .photo-credits {
@@ -569,7 +592,15 @@ input:focus, select:focus {
 
 .register-transport-gallery {
   margin-top: 20px;
+}
+
+.register-transport-gallery .transport-slide-set {
   gap: 10px;
+  padding-right: 10px;
+}
+
+.register-transport-gallery .transport-card {
+  flex-basis: clamp(150px, 48vw, 210px);
 }
 
 .register-transport-gallery .transport-card {
@@ -950,10 +981,6 @@ button:focus-visible {
     min-height: 260px;
   }
 
-  .transport-gallery {
-    gap: 8px;
-  }
-
   h1 {
     font-size: 2.8rem;
   }
@@ -1084,5 +1111,19 @@ button:focus-visible {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .transport-gallery {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .transport-track {
+    animation: none;
+    transform: none;
+  }
+
+  .transport-card {
+    scroll-snap-align: start;
   }
 }

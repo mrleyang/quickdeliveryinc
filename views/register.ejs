@@ -11,19 +11,37 @@
         <li>Optimized tracking</li>
         <li>Centralized management</li>
       </ul>
-      <div class="transport-gallery register-transport-gallery" aria-label="Parcel, air and sea delivery">
-        <figure class="transport-card">
-          <img src="/images/parcel-photo.jpg" alt="Packages moving through a shipping warehouse" />
-          <figcaption>Parcels</figcaption>
-        </figure>
-        <figure class="transport-card">
-          <img src="/images/aircraft-photo.jpg" alt="Cathay Pacific cargo airplane at the airport" />
-          <figcaption>Air</figcaption>
-        </figure>
-        <figure class="transport-card">
-          <img src="/images/cargo-ship-photo.jpg" alt="Container ship carrying freight at port" />
-          <figcaption>Sea</figcaption>
-        </figure>
+      <div class="transport-gallery register-transport-gallery" role="region" aria-roledescription="carousel" aria-label="Parcel, air and sea delivery">
+        <div class="transport-track">
+          <div class="transport-slide-set">
+            <figure class="transport-card">
+              <img src="/images/parcel-photo.jpg" alt="Packages moving through a shipping warehouse" />
+              <figcaption>Parcels</figcaption>
+            </figure>
+            <figure class="transport-card">
+              <img src="/images/aircraft-photo.jpg" alt="Cathay Pacific cargo airplane at the airport" />
+              <figcaption>Air</figcaption>
+            </figure>
+            <figure class="transport-card">
+              <img src="/images/cargo-ship-photo.jpg" alt="Container ship carrying freight at port" />
+              <figcaption>Sea</figcaption>
+            </figure>
+          </div>
+          <div class="transport-slide-set" aria-hidden="true">
+            <figure class="transport-card">
+              <img src="/images/parcel-photo.jpg" alt="" />
+              <figcaption>Parcels</figcaption>
+            </figure>
+            <figure class="transport-card">
+              <img src="/images/aircraft-photo.jpg" alt="" />
+              <figcaption>Air</figcaption>
+            </figure>
+            <figure class="transport-card">
+              <img src="/images/cargo-ship-photo.jpg" alt="" />
+              <figcaption>Sea</figcaption>
+            </figure>
+          </div>
+        </div>
       </div>
       <p class="photo-credits">
         Photos:
