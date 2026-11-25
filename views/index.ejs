@@ -21,49 +21,54 @@
     </div>
 
     <div class="hero-visual">
-      <div class="transport-gallery" role="region" aria-roledescription="carousel" aria-label="Our delivery methods">
-        <div class="transport-track">
-          <div class="transport-slide-set">
-            <figure class="transport-card">
-              <img src="/images/parcel-photo.jpg" alt="Packages moving through a shipping warehouse" />
-              <figcaption>Parcels</figcaption>
-            </figure>
-            <figure class="transport-card">
-              <img src="/images/aircraft-photo.jpg" alt="Cathay Pacific cargo airplane at the airport" />
-              <figcaption>Air freight</figcaption>
-            </figure>
-            <figure class="transport-card">
-              <img src="/images/cargo-ship-photo.jpg" alt="Container ship carrying freight at port" />
-              <figcaption>Sea freight</figcaption>
-            </figure>
-          </div>
-          <div class="transport-slide-set" aria-hidden="true">
-            <figure class="transport-card">
-              <img src="/images/parcel-photo.jpg" alt="" />
-              <figcaption>Parcels</figcaption>
-            </figure>
-            <figure class="transport-card">
-              <img src="/images/aircraft-photo.jpg" alt="" />
-              <figcaption>Air freight</figcaption>
-            </figure>
-            <figure class="transport-card">
-              <img src="/images/cargo-ship-photo.jpg" alt="" />
-              <figcaption>Sea freight</figcaption>
-            </figure>
-          </div>
-        </div>
-      </div>
-      <p class="photo-credits">
-        Photos:
-        <a href="https://commons.wikimedia.org/wiki/File:A_Cathay_Pacific_Cargo_Aircraft.jpg" target="_blank" rel="noopener noreferrer">cargo aircraft by Iswzo</a>
-        and
-        <a href="https://commons.wikimedia.org/wiki/File:Container_ship_Express_Black_Sea_in_Fremantle_Harbour,_April_2026_01.jpg" target="_blank" rel="noopener noreferrer">container ship by Calistemon</a>,
-        <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>.
-      </p>
       <div class="card-floating package-card">
         <span class="mini-label">Shipment in transit</span>
         <strong>QD-240001</strong>
         <small>Paris → Lyon</small>
+      </div>
+      <div class="delivery-animation" role="img" aria-label="A parcel travels from a warehouse to a home">
+        <svg viewBox="0 0 360 150" aria-hidden="true">
+          <path class="delivery-route" d="M 322 112 Q 180 8 38 112" />
+          <path class="delivery-horizon" d="M 18 116 H 342" />
+          <g class="home-icon" transform="translate(8 82)">
+            <path class="home-roof" d="M 0 15 28 0 56 15 52 20 28 7 4 20Z" />
+            <path class="home-wall" d="M 7 18 28 7 49 18V 34H 7Z" />
+            <path class="home-door" d="M 23 23H 33V 34H 23Z" />
+            <path class="home-window" d="M 11 22H 19V 28H 11Z M 37 22H 45V 28H 37Z" />
+          </g>
+          <g class="warehouse-icon" transform="translate(296 82)">
+            <path class="warehouse-roof" d="M 0 10 28 0 56 10V 15H 0Z" />
+            <path class="warehouse-wall" d="M 4 15H 52V 34H 4Z" />
+            <path class="warehouse-door" d="M 20 20H 36V 34H 20Z" />
+            <path class="warehouse-window" d="M 8 20H 15V 27H 8Z M 41 20H 48V 27H 41Z" />
+          </g>
+          <g class="parcel-motion">
+            <animateMotion
+              dur="8s"
+              repeatCount="indefinite"
+              path="M 322 102 Q 180 8 38 102"
+            />
+            <animate
+              attributeName="opacity"
+              values="0;1;1;0"
+              keyTimes="0;0.12;0.86;1"
+              dur="8s"
+              repeatCount="indefinite"
+            />
+            <g transform="translate(-14 -12)">
+              <path class="parcel-box" d="M 0 5 14 0 28 5 14 11Z" />
+              <path class="parcel-box-side" d="M 0 5 14 11V 24L 0 18Z" />
+              <path class="parcel-box-front" d="M 14 11 28 5V 18L 14 24Z" />
+              <path class="parcel-tape" d="M 12 1 17 3 12 6V 19L 9 18V 5Z" />
+            </g>
+          </g>
+          <g class="static-parcel" transform="translate(180 56)">
+            <path class="parcel-box" d="M 0 5 14 0 28 5 14 11Z" />
+            <path class="parcel-box-side" d="M 0 5 14 11V 24L 0 18Z" />
+            <path class="parcel-box-front" d="M 14 11 28 5V 18L 14 24Z" />
+            <path class="parcel-tape" d="M 12 1 17 3 12 6V 19L 9 18V 5Z" />
+          </g>
+        </svg>
       </div>
     </div>
   </div>
@@ -103,6 +108,25 @@
         <h3>B2B &amp; e-commerce</h3>
         <p>Order management, recurring shipments and centralized control for growing businesses.</p>
       </article>
+    </div>
+
+    <div class="hero-visual services-visual">
+      <div class="transport-gallery" role="region" aria-roledescription="carousel" aria-label="Our delivery methods" tabindex="0">
+        <div class="transport-track">
+          <figure class="transport-card">
+            <img src="/images/parcel-photo.jpg" alt="Packages moving through a shipping warehouse" />
+            <figcaption>Parcels</figcaption>
+          </figure>
+          <figure class="transport-card">
+            <img src="/images/aircraft-photo.jpg" alt="Cathay Pacific cargo airplane at the airport" />
+            <figcaption>Air freight</figcaption>
+          </figure>
+          <figure class="transport-card">
+            <img src="/images/cargo-ship-photo.jpg" alt="Container ship carrying freight at port" />
+            <figcaption>Sea freight</figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
   </div>
 </section>

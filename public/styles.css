@@ -220,6 +220,88 @@ input:focus, select:focus {
   gap: 14px;
 }
 
+.delivery-animation {
+  position: absolute;
+  left: 8px;
+  bottom: 4px;
+  width: min(100%, 340px);
+}
+
+.delivery-animation svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+.delivery-route {
+  fill: none;
+  stroke: #b7c8bc;
+  stroke-width: 2;
+  stroke-dasharray: 4 6;
+}
+
+.delivery-horizon {
+  fill: none;
+  stroke: #789087;
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+
+.home-roof {
+  fill: var(--primary);
+}
+
+.home-wall {
+  fill: #f2d5a5;
+}
+
+.home-door {
+  fill: #a2332a;
+}
+
+.home-window,
+.warehouse-window {
+  fill: #fffefa;
+}
+
+.warehouse-roof {
+  fill: var(--dark-soft);
+}
+
+.warehouse-wall {
+  fill: #dce5df;
+}
+
+.warehouse-door {
+  fill: var(--success);
+}
+
+.parcel-box {
+  fill: #e7b969;
+}
+
+.parcel-box-side {
+  fill: #c98c4d;
+}
+
+.parcel-box-front {
+  fill: #b8753c;
+}
+
+.parcel-tape {
+  fill: #fff0ec;
+}
+
+.static-parcel {
+  display: none;
+}
+
+.services-visual {
+  max-width: 760px;
+  min-height: 0;
+  margin: 34px auto 0;
+}
+
 .transport-gallery {
   overflow: hidden;
   width: 100%;
@@ -227,8 +309,8 @@ input:focus, select:focus {
 
 .transport-track {
   display: flex;
-  width: max-content;
-  animation: transport-scroll 24s linear infinite;
+  width: 300%;
+  animation: transport-scroll 18s steps(2, end) infinite alternate;
 }
 
 .transport-gallery:hover .transport-track,
@@ -236,16 +318,8 @@ input:focus, select:focus {
   animation-play-state: paused;
 }
 
-.transport-slide-set {
-  display: flex;
-  flex: 0 0 auto;
-  align-items: center;
-  gap: 12px;
-  padding-right: 12px;
-}
-
 .transport-card {
-  flex: 0 0 clamp(190px, 72vw, 280px);
+  flex: 0 0 33.3333%;
   min-width: 0;
   margin: 0;
   overflow: hidden;
@@ -259,7 +333,7 @@ input:focus, select:focus {
 .transport-card img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
 }
 
@@ -272,7 +346,7 @@ input:focus, select:focus {
 
 @keyframes transport-scroll {
   to {
-    transform: translateX(-50%);
+    transform: translateX(-66.6667%);
   }
 }
 
@@ -288,6 +362,10 @@ input:focus, select:focus {
   text-underline-offset: 2px;
 }
 
+.site-footer .photo-credits {
+  color: rgba(255,255,255,0.65);
+}
+
 .card-floating {
   position: absolute;
   background: white;
@@ -298,13 +376,11 @@ input:focus, select:focus {
 }
 
 .package-card {
-  position: static;
   display: flex;
   flex-direction: column;
-  width: fit-content;
-  margin-left: auto;
-  padding: 12px 16px;
-  box-shadow: 0 10px 24px rgba(23, 42, 40, 0.08);
+  left: 36px;
+  top: 36px;
+  width: 200px;
 }
 
 .mini-label {
@@ -592,15 +668,6 @@ input:focus, select:focus {
 
 .register-transport-gallery {
   margin-top: 20px;
-}
-
-.register-transport-gallery .transport-slide-set {
-  gap: 10px;
-  padding-right: 10px;
-}
-
-.register-transport-gallery .transport-card {
-  flex-basis: clamp(150px, 48vw, 210px);
 }
 
 .register-transport-gallery .transport-card {
@@ -978,7 +1045,7 @@ button:focus-visible {
   }
 
   .hero-visual {
-    min-height: 260px;
+    min-height: 300px;
   }
 
   h1 {
@@ -1055,7 +1122,12 @@ button:focus-visible {
   }
 
   .hero-visual {
-    min-height: 220px;
+    min-height: 290px;
+  }
+
+  .package-card {
+    left: 4px;
+    top: 16px;
   }
 
   .map-card {
@@ -1121,9 +1193,18 @@ button:focus-visible {
   .transport-track {
     animation: none;
     transform: none;
+    width: 300%;
   }
 
   .transport-card {
     scroll-snap-align: start;
+  }
+
+  .parcel-motion {
+    display: none;
+  }
+
+  .static-parcel {
+    display: block;
   }
 }
