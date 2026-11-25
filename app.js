@@ -72,10 +72,31 @@ app.get('/', (req, res) => {
     { label: 'Countries served', value: '220' },
     { label: 'Average delivery', value: '< 48h' },
   ];
+  const testimonials = [
+    {
+      name: 'Sophie Martin',
+      role: 'Shop owner',
+      quote: 'My packages always arrive on time, and real-time tracking lets me keep my customers informed every step of the way.',
+      rating: 5,
+    },
+    {
+      name: 'Thomas Leroy',
+      role: 'E-commerce manager',
+      quote: 'QuickDeveleryInc has simplified our entire logistics operation. The platform is clear and fast, and our team saves a lot of time.',
+      rating: 5,
+    },
+    {
+      name: 'Camille Dubois',
+      role: 'Individual customer',
+      quote: 'Fast delivery, a professional courier, and accurate updates. The service exceeded my expectations.',
+      rating: 5,
+    },
+  ];
 
   res.render('index', {
     title: 'QuickDeveleryInc | Fast, reliable delivery',
     stats,
+    testimonials,
   });
 });
 

@@ -214,8 +214,55 @@ input:focus, select:focus {
 .hero-visual {
   position: relative;
   min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+}
+
+.transport-gallery {
   display: grid;
-  place-items: center;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.transport-card {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.transport-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.transport-card figcaption {
+  padding: 8px 4px;
+  color: var(--dark-soft);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.photo-credits {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.65rem;
+  line-height: 1.5;
+}
+
+.photo-credits a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .card-floating {
@@ -228,11 +275,13 @@ input:focus, select:focus {
 }
 
 .package-card {
-  left: 36px;
-  top: 36px;
+  position: static;
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: fit-content;
+  margin-left: auto;
+  padding: 12px 16px;
+  box-shadow: 0 10px 24px rgba(23, 42, 40, 0.08);
 }
 
 .mini-label {
@@ -402,6 +451,85 @@ input:focus, select:focus {
   margin-bottom: 18px;
 }
 
+.testimonials-panel {
+  background: linear-gradient(180deg, #f3f6f3 0%, #fffefa 100%);
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+  padding: 28px 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 44px rgba(23, 42, 40, 0.13);
+  border-color: #c7d7ce;
+}
+
+.testimonial-rating {
+  color: #e7a33e;
+  letter-spacing: 3px;
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+}
+
+.testimonial-card blockquote {
+  flex: 1;
+  margin: 0 0 22px;
+  color: var(--dark-soft);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.author-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  border-radius: 50%;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-family: var(--font-display);
+  font-weight: 800;
+}
+
+.testimonial-author strong,
+.testimonial-author small {
+  display: block;
+}
+
+.testimonial-author strong {
+  color: var(--dark);
+}
+
+.testimonial-author small {
+  color: var(--muted);
+  margin-top: 2px;
+}
+
 .two-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -437,6 +565,25 @@ input:focus, select:focus {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.register-transport-gallery {
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.register-transport-gallery .transport-card {
+  border-color: rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.96);
+}
+
+.register-transport-gallery .transport-card figcaption {
+  padding: 6px 3px;
+  font-size: 0.74rem;
+}
+
+.info-panel .photo-credits {
+  color: rgba(255,255,255,0.75);
 }
 
 .info-panel .eyebrow {
@@ -767,6 +914,7 @@ button:focus-visible {
   .service-grid,
   .account-grid,
   .track-grid,
+  .testimonial-grid,
   .footer-grid,
   .two-fields,
   .dashboard-summary,
@@ -800,6 +948,10 @@ button:focus-visible {
 
   .hero-visual {
     min-height: 260px;
+  }
+
+  .transport-gallery {
+    gap: 8px;
   }
 
   h1 {
@@ -877,11 +1029,6 @@ button:focus-visible {
 
   .hero-visual {
     min-height: 220px;
-  }
-
-  .package-card {
-    left: 4px;
-    top: 16px;
   }
 
   .map-card {
